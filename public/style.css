@@ -1,0 +1,68 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: blue;
+}
+
+header, h1 {
+    background-color: antiquewhite;
+    padding: 10px;
+    color: white !important;
+}
+
+header a {
+    margin: 10px;
+    padding: 5px;
+    color: white !important;
+}
+
+.card-title {
+    background-color: brown;
+    color: white;
+    padding: 5px;
+}
+
+.card {
+    background-color: antiquewhite;
+}
+
+.card h5, .card p {
+    color: black;
+    font-style: normal;
+}
+
+button {
+    padding: 3px;
+    margin: 5px;
+}
+
+#newPost {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#content, #editContent {
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+#create, #update, #delete {
+    margin-left: 30vw;
+    margin-right: 30vw;
+    margin-top: 20px;
+}
+
+#comment {
+    width: 80vw;
+    margin-top: 20px;
+}
+
+#title, #editedTitle {
+    width: 80vw;
+}
