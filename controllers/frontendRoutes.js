@@ -10,18 +10,18 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get("/login", (req,res) => {
+router.get('/login', (req,res) => {
     if(req.session.user){
         return res.redirect("/dashboard")
     }
     res.render("login")
 })
 
-router.get("/signup", (req, res) => {
+router.get('/signup', (req, res) => {
     res.render("signup")
 })
 
-router.get("/dashboard", (req, res) => {
+router.get('/dashboard', (req, res) => {
     if(!req.session.user) {
         return res.redirect('/login')
     }
@@ -34,7 +34,7 @@ router.get("/dashboard", (req, res) => {
     })
 })
 
-router.get("blogs/:id", (req, res) => {
+router.get('blogs/:id', (req, res) => {
     if(!req.session.user) {
         return res.redirect('/login')
     }

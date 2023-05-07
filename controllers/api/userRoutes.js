@@ -3,7 +3,7 @@ const router = express.Router();
 const {User, Blog, Comment} = require("../../models/");
 const bcrypt = require("bcrypt");
 
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
     User.findAll({
         include:[Blog, Comment]
     })
@@ -17,12 +17,12 @@ router.get("/", (req, res) => {
 });
 
 //Logout 
-router.get("/logout", (req, res) => {
+router.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
 })
 
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
     User.findByPk(req.params.id,{include:[Blog, Comment]})
     .then(dbUser => {
         res.json(dbUser);
@@ -34,7 +34,7 @@ router.get("/:id", (req, res) => {
 });
 
 //Sign up
-router.post("/", (req, res) => {
+router.post('/', (req, res) => {
     User.create(req.body, {individualHooks: true})
     .then(newUser => {
         req.session.user = {
@@ -50,7 +50,7 @@ router.post("/", (req, res) => {
 });
 
 //Login Post
-router.post("/login", (req, res) => {
+router.post('/login', (req, res) => {
     User.findOne({
         where:{
             username:req.body.username
@@ -74,7 +74,7 @@ router.post("/login", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+router.put('/:id', (req, res) => {
     User.update(req.body, {
         where: {
             id: req.params.id
@@ -89,7 +89,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete('/:id', (req, res) => {
     User.destroy({
         where: {
             id: req.params.id

@@ -3,7 +3,7 @@ const router = express.Router();
 const {User, Blog, Comment} = require ("../../models");
 
 //GET comments
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
     Comment.findAll({include:[User, Blog]})
     .then(dbComments => {
         res.json(dbComments);
@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 });
 
 //GET comments with related user and blog
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
     Comment.findByPk(req.params.id,{include:[User, Blog]})
     .then(dbComment => {
         res.json(dbComment);
@@ -27,7 +27,7 @@ router.get("/:id", (req, res) => {
 });
 
 //Create comment
-router.post("/", (res, req) => {
+router.post('/', (res, req) => {
     if(!req.session.user){
         return res.status(401).json({msg: "Please log in"})
     }
@@ -46,7 +46,7 @@ router.post("/", (res, req) => {
 });
 
 //Update comment
-router.put("/:id", (req, res) => {
+router.put('/:id', (req, res) => {
     if(!req.session.user){
         return res.status(401).json({msg: "Please log in"})
     }
@@ -64,7 +64,7 @@ router.put("/:id", (req, res) => {
 });
 
 //Delete comment
-router.delete("/:id", (req, res) => {
+router.delete('/:id', (req, res) => {
     if(!req.session.user){
         return res.status(401).json({msg: "Please log in"})
     }

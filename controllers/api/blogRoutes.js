@@ -4,7 +4,7 @@ const {User, Blog, Comment} = require("../../models");
 const withAuth = require('../../util/auth')
 
 //GET blogs, users, comments
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
     Blog.findAll({include:[User, Comment]})
     .then(dbBlogs => {
         res.json(dbBlogs);
@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 });
 
 //GET blog with related user and comment
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
     Blog.findByPk(req.params.id,{include:[User, Comment]})
     .then(dbBlog => {
         res.json(dbBlog);
@@ -28,7 +28,7 @@ router.get("/:id", (req, res) => {
 });
 
 //Create blog post
-router.post("/", (req, res) => {
+router.post('/', (req, res) => {
     if(!req.session.user){
         return res.status(401).json({msg: "Please log in"})
     }
@@ -47,7 +47,7 @@ router.post("/", (req, res) => {
 });
 
 //Put post
-router.put("/:id", (req, res) => {
+router.put('/:id', (req, res) => {
     if(!req.session.user){
         return res.status(401).json({msg: "Please log in"})
     }
@@ -64,7 +64,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete('/:id', (req, res) => {
     if(!req.session.user){
         return res.status(401).json({msg: "Please log in"})
     }
